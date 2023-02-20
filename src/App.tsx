@@ -1,4 +1,6 @@
 import { useQuery, gql } from '@apollo/client';
+import Box from '@mui/material/Box';
+import CountryCard from './components/CountryCard';
 
 const GET_COUNTRIES = gql`
 query {
@@ -27,7 +29,6 @@ query {
 
 function App() {
 
-  
   const { loading, error, data } = useQuery(GET_COUNTRIES);
 
   if (loading) return <p>Loading...</p>;
@@ -36,9 +37,20 @@ function App() {
   console.log(data.countries);
   
   return (
-    <div className="">
-      
-    </div>
+    <Box>
+      {data.countries.map((item: any) => (
+        <CountryCard 
+          code={''} 
+          emoji={item.emoji} 
+          name={item.name} 
+          capital={item.capital} 
+          continent={item.continent} 
+          currency={item.currency} 
+          languages={item.languages} 
+          phone={item.phone}
+        />
+      ))}
+    </Box>
   );
 }
 

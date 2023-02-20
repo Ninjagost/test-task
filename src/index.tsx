@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { ApolloClient, ApolloProvider, useQuery, gql } from '@apollo/client';
+import { ApolloClient, ApolloProvider } from '@apollo/client';
 import { InMemoryCache } from '@apollo/client/cache';
 
 
