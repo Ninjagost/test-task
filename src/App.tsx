@@ -1,24 +1,43 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useQuery, gql } from '@apollo/client';
+
+const GET_COUNTRIES = gql`
+query {
+  countries(filter: {code: {in: "UZ"}}) {
+		code
+    name
+    native
+    phone
+    capital
+    currency
+    languages {
+     	name
+      native
+      rtl
+    }
+    continent {
+			name
+    }
+    emoji
+    states {
+			name
+    }
+  }
+}
+`
 
 function App() {
+
+  
+  const { loading, error, data } = useQuery(GET_COUNTRIES);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error : {error.message}</p>;
+
+  console.log(data.countries);
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="">
+      
     </div>
   );
 }
