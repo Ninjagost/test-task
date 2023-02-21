@@ -20,8 +20,8 @@ interface CountryCardProps {
 const CountryCard: React.FC<CountryCardProps> = (props) => {
 
   return (
-    <Card sx={{ padding:"7px", maxWidth:"400px" }} >
-      <CardContent sx={{ display:"flex", justifyContent:"space-between" }}>
+    <Card sx={{ padding:"7px", width:"400px"}} >
+      <CardContent sx={{ display:"flex", justifyContent:"space-between", gridGap:"15px" }}>
         <Box>
           {props.emoji} 
         </Box>
@@ -32,7 +32,7 @@ const CountryCard: React.FC<CountryCardProps> = (props) => {
         <Typography variant="h6" color="initial">{props.continent.name}</Typography>
       </CardContent> 
       <CardContent>
-        <Box display="flex" justifyContent="space-between">
+        <Box display="flex" alignItems="center" justifyContent="space-between">
           <Box display="flex" gap="5px">
             <PhoneIcon/>
             <Typography variant="h6" color="initial">{props.phone}</Typography>    
